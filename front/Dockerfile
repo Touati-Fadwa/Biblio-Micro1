@@ -1,5 +1,5 @@
 # Étape 1 : Utiliser une image officielle de Node.js pour construire l'application React
-FROM node:16
+FROM node:18
 
 # Étape 2 : Définir le répertoire de travail dans l'image Docker
 WORKDIR /app
