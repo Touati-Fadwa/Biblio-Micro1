@@ -42,29 +42,30 @@ jobs:
         run: |
           docker build -f front/Dockerfile -t touatifadwa/frontend:latest .  # Construire l'image Docker pour le frontend
 
-      # Étape 6 : Exécuter les tests backend (par exemple, Mocha ou Jest)
-      - name: Run Backend Tests
-        run: |
-          cd back  # Se déplacer dans le répertoire 'back'
-          npm test  # Exécuter les tests du backend
-
-      # Étape 7 : Exécuter les tests frontend (par exemple, Jest)
-      - name: Run Frontend Tests
-        run: |
-          cd front  # Se déplacer dans le répertoire 'front'
-          npm test  # Exécuter les tests du frontend
-
-      # Étape 8 : Se connecter à Docker Hub et pousser l'image du backend
+      # Étape 6 : Se connecter à Docker Hub et pousser l'image du backend
       - name: Push Backend Docker Image
         run: |
           docker login -u touatifadwa -p foufou53550880  # Se connecter à Docker Hub avec les secrets
           docker push touatifadwa/backend:latest  # Pousser l'image du backend vers Docker Hub
 
-      # Étape 9 : Se connecter à Docker Hub et pousser l'image du frontend
+      # Étape 7 : Se connecter à Docker Hub et pousser l'image du frontend
       - name: Push Frontend Docker Image
         run: |
           docker login -u touatifadwa -p foufou53550880  # Se connecter à Docker Hub avec les secrets
           docker push touatifadwa/frontend:latest  # Pousser l'image du frontend vers Docker Hub
+      # Étape 8 : Exécuter les tests backend (par exemple, Mocha ou Jest)
+      - name: Run Backend Tests
+        run: |
+          cd back  # Se déplacer dans le répertoire 'back'
+          npm test  # Exécuter les tests du backend
+
+      # Étape 9 : Exécuter les tests frontend (par exemple, Jest)
+      - name: Run Frontend Tests
+        run: |
+          cd front  # Se déplacer dans le répertoire 'front'
+          npm test  # Exécuter les tests du frontend
+
+     
 
       # Étape 10 : Déployer sur Kubernetes
       - name: Deploy to Kubernetes
