@@ -35,12 +35,12 @@ jobs:
       # Étape 4 : Construire l'image Docker du backend
       - name: Build Backend Docker Image
         run: |
-          docker build -f back/Dockerfile -t ${{ secrets.touatifadwa }}/backend:latest .  # Construire l'image Docker pour le backend
+          docker build -f back/Dockerfile -t touatifadwa/backend:latest .  # Construire l'image Docker pour le backend
 
       # Étape 5 : Construire l'image Docker du frontend
       - name: Build Frontend Docker Image
         run: |
-          docker build -f front/Dockerfile -t ${{ secrets.touatifadwa }}/frontend:latest .  # Construire l'image Docker pour le frontend
+          docker build -f front/Dockerfile -t touatifadwa/frontend:latest .  # Construire l'image Docker pour le frontend
 
       # Étape 6 : Exécuter les tests backend (par exemple, Mocha ou Jest)
       - name: Run Backend Tests
@@ -57,14 +57,14 @@ jobs:
       # Étape 8 : Se connecter à Docker Hub et pousser l'image du backend
       - name: Push Backend Docker Image
         run: |
-          docker login -u ${{ secrets.touatifadwa }} -p ${{ secrets.foufou53550880 }}  # Se connecter à Docker Hub avec les secrets
-          docker push ${{ secrets.touatifadwa }}/backend:latest  # Pousser l'image du backend vers Docker Hub
+          docker login -u touatifadwa -p foufou53550880  # Se connecter à Docker Hub avec les secrets
+          docker push touatifadwa/backend:latest  # Pousser l'image du backend vers Docker Hub
 
       # Étape 9 : Se connecter à Docker Hub et pousser l'image du frontend
       - name: Push Frontend Docker Image
         run: |
-          docker login -u ${{ secrets.touatifadwa }} -p ${{ secrets.foufou53550880}}  # Se connecter à Docker Hub avec les secrets
-          docker push ${{ secrets.touatifadwa }}/frontend:latest  # Pousser l'image du frontend vers Docker Hub
+          docker login -u touatifadwa -p foufou53550880  # Se connecter à Docker Hub avec les secrets
+          docker push touatifadwa/frontend:latest  # Pousser l'image du frontend vers Docker Hub
 
       # Étape 10 : Déployer sur Kubernetes
       - name: Deploy to Kubernetes
