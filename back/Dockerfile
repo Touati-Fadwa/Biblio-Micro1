@@ -1,5 +1,5 @@
 # Étape 1 : Utiliser une image officielle de Node.js comme base
-FROM node:16
+FROM node:18
 
 # Étape 2 : Définir le répertoire de travail dans l'image Docker
 WORKDIR /app
@@ -12,7 +12,7 @@ RUN npm install  # Installer les dépendances du projet
 COPY . .
 
 # Étape 5 : Exposer le port sur lequel l'application backend va fonctionner
-EXPOSE 8080
+EXPOSE 3000
 
 # Étape 6 : Lancer l'application avec la commande 'npm start'
 CMD ["npm", "start"]
