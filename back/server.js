@@ -55,6 +55,11 @@ const checkAdminRole = (req, res, next) => {
   next();
 };
 
+// Route GET /
+app.get('/', (req, res) => {
+  res.status(200).send('Backend de la bibliothèque ISET Tozeur');
+});
+
 // Login endpoint
 app.post('/api/auth/login', async (req, res) => {
   const { email, password, role } = req.body;
