@@ -1,4 +1,3 @@
-
 const express = require('express');
 const cors = require('cors');
 const bcrypt = require('bcrypt');
@@ -211,8 +210,13 @@ app.get('/api/students', authenticateToken, checkAdminRole, async (req, res) => 
   }
 });
 
-// Start server
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+// Exporter l'application Express pour les tests
+module.exports = app;
+
+// Démarrer le serveur uniquement si ce fichier est exécuté directement
+if (require.main === module) {
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
+}
